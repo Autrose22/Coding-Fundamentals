@@ -109,3 +109,21 @@ function newQuiz() {
 
     showQuiz();
 };
+
+function nextQuestion() {
+    questionTitle.textContent = questions[questionIndex].question;
+    choiceA.textContent = questions[questionIndex].choices[0];
+    choiceB.textContent = questions[questionIndex].choices[1];
+    choiceC.textContent = questions[questionIndex].choices[2];
+    choiceD.textContent = questions[questionIndex].choices[3];
+}
+
+function checkAnswer(answer) {
+    if (questions[questionIndex].answer === questions[questionIndex].choices[answer]) {
+        answerCheck.textContent = "correct!";
+
+} else {
+    totalTime -=10;
+    timeLeft.textContent = totalTime;
+    answerCheck.textContent = "Wrong! The correct answer is: " + questions[questionIndex].answer;
+}
