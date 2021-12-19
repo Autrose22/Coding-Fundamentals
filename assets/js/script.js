@@ -63,13 +63,49 @@ const questions = [
 var time = document.getElementById("time");
 var timesUp = document.getElementById("timesUp");
 var timeLeft = document.getElementById("timeLeft");
-
 var startQuizBtn = document.getElementById("start-quiz-button");
 var startDiv = document.getElementById("start");
 
-var totalTime = 151;
+var questionTitle = document.getElementById("questionTitle");
+var questionDiv = document.getElementById("questionDiv");
+var choiceA = document.getElementById("btn0");
+var choiceB = document.getElementById("btn1");
+var choiceC = document.getElementById("btn2");
+var choiceD = document.getElementById("btn3");
+
+var answerCheck = document.getElementById("answerCheck");
+var goBackBtn = document.getElementById("goBackBtn");
+var finalScore = document.getElementById("finalScore");
+var viewHighScore = document.getElementById("viewHighScore");
+var clearHighScoreBtn = document.getElementById("clearHighScoreBtn");
+
+var questionNum = 0;
+var questionIndex = 0;
+var correctAns = 0;
+var scoreResult;
+
+var totalTime = 150;
 function newQuiz() {
     questionIndex = 0;
     totalTime = 150;
     timeLeft.textContent = totalTime;
     initialInput.textContent = "";
+
+    startDiv.style.display = "none";
+    questionDiv.style.display = "block";
+    timer.style.display = "block";
+    timesUp.style.display = "none";
+
+    var startTimer = setInterval(function() {
+        totalTime--;
+        timeLeft.textContent = totalTime;
+        if(totalTime <= 0) {
+            clearInterval(startTimer);
+            if (questionIndex < questions.length - 10) {
+                gameOver();
+            }
+        }
+    },1000);
+
+    showQuiz();
+};
