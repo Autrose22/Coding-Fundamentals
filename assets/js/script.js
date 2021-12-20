@@ -39,7 +39,7 @@ const questions = [
         question: "Which event occurs when the user clicks on an HTML element?",
         choices: ["a. onclick", "b. onchange", "c. onmouseover", "d. onmouseclick"],
         answer: "a. onclick"
-    }
+    },
 
     {
         question: "How do you add a comment in a HTML?",
@@ -127,3 +127,17 @@ function checkAnswer(answer) {
     timeLeft.textContent = totalTime;
     answerCheck.textContent = "Wrong! The correct answer is: " + questions[questionIndex].answer;
 }
+questionIndex++;
+if (questionIndex < questions.length) {
+    nextQuestion();
+} else {
+    gameOver();
+ }
+}
+function chooseA() { checkAnswer(0); }
+
+function chooseB() { checkAnswer(1); }
+
+function chooseC() { checkAnswer(2); }
+
+function chooseD() { checkAnswer(3); }
